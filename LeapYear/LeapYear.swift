@@ -11,18 +11,13 @@ struct LeapYear {
 
         if year.isMultiple(of: 400) {
             return true
-        } else if year.isMultiple(of: 100){
+        } else if year.isMultiple(of: 100) {
             return false
         }
 
-        if year.isMultiple(of: 4), !year.isMultiple(of: 100) {
+        if year.isMultiple(of: 4) && !year.isMultiple(of: 100) {
             return true
         }
-
-        if year.isMultiple(of: 4) {
-            return false
-        }
-
-        return false 
+        return false
     }
 }

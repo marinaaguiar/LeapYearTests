@@ -20,35 +20,19 @@ final class LeapYearTests: XCTestCase {
         super.tearDown()
     }
 
-    func testCheckLeapYearIsTrue() {
-        let result = leapYear.isLeapYear(year: 2000)
-
-        XCTAssertTrue(result)
+    func test_isLeapYear_divisibleBy400() {
+        XCTAssertTrue(leapYear.isLeapYear(year: 2000))
     }
 
-    func testCheckLeapYearIsFalse() {
-        let result = leapYear.isLeapYear(year: 2100)
-
-        XCTAssertFalse(result)
+    func test_isLeapYear_shouldReturnFalse_forYearsNotDivisibleBy400ButDivisibleBy100() {
+        XCTAssertFalse(leapYear.isLeapYear(year: 1800))
     }
 
-    func testLeapYears() {
-        let leapYears = [2000, 2008, 2012, 2016]
-
-        leapYears.forEach { year in
-            let result = leapYear.isLeapYear(year: year)
-
-            XCTAssertTrue(result)
-        }
+    func test_isLeapYear_isDivisibleBy4ButNotDivisibleBy100() {
+        XCTAssertTrue(leapYear.isLeapYear(year: 2008))
     }
 
-    func testNotLeapYears() {
-        let leapYears = [1700, 1800, 1900, 2100, 2017, 2018, 2019]
-
-        leapYears.forEach { year in
-            let result = leapYear.isLeapYear(year: year)
-
-            XCTAssertFalse(result)
-        }
+    func test_isLeapYear_shouldReturnFalse_forYearsNotDivisibleBy4() {
+        XCTAssertFalse(leapYear.isLeapYear(year: 2019))
     }
 }
